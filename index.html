@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f7f7f7;
+        }
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 32px 0 0 0;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .site-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            padding: 0 0 0 48px;
+            text-align: center;
+        }
+        .menu-bar {
+            display: flex;
+            align-items: center;
+            width: 100vw;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 8px 0 16px 0;
+        }
+        .hamburger {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
+            margin-right: 16px;
+        }
+        .hamburger span {
+            height: 4px;
+            width: 28px;
+            background: #333;
+            margin: 3px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .menu-options {
+            display: flex;
+            gap: 24px;
+        }
+        .menu-link {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .menu-link:hover {
+            color: #0078d7;
+        }
+        .gallery {
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+            column-count: 3;
+            column-gap: 24px;
+            padding: 0 16px;
+        }
+        .art-card {
+            background: #fff;
+            margin-bottom: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            overflow: hidden;
+            break-inside: avoid;
+            display: flex;
+            flex-direction: column;
+        }
+        .art-card img {
+            width: 100%;
+            display: block;
+        }
+        .art-title {
+            padding: 12px 16px 8px 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .art-desc {
+            padding: 0 16px 12px 16px;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        @media (max-width: 900px) {
+            .gallery {
+                column-count: 2;
+            }
+        }
+        @media (max-width: 600px) {
+            .gallery {
+                column-count: 1;
+            }
+            .site-title {
+                font-size: 2rem;
+                padding-left: 0;
+            }
+            .menu-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="site-title">Maria Clara</div>
+        <div class="menu-bar">
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="menu-options" id="menuOptions">
+                <a class="menu-link" href="#gallery">Gallery</a>
+                <a class="menu-link" href="#about">About</a>
+                <a class="menu-link" href="#contact">Contact</a>
+                <a class="menu-link" href="#exhibitions">Exhibitions</a>
+                <a class="menu-link" href="#shop">Shop</a>
+            </nav>
+        </div>
+    </div>
+    <main>
+        <section class="gallery" id="gallery">
+            <!-- Example art cards, replace src with your images -->
+            <div class="art-card">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Art 1">
+                <div class="art-title">Sunset Dream</div>
+                <div class="art-desc">Acrylic on canvas, 2023</div>
+            </div>
+            <div class="art-card">
+                <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Art 2">
+                <div class="art-title">Forest Walk</div>
+                <div class="art-desc">Oil on board, 2022</div>
+            </div>
+            <div class="art-card">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=400&q=80" alt="Art 3">
+                <div class="art-title">Urban Lights</div>
+                <div class="art-desc">Digital, 2024</div>
+            </div>
+            <!-- Add more art-card divs as needed -->
+        </section>
+    </main>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menuOptions');
+            if (menu.style.display === 'flex' || menu.style.display === '') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+            }
+        }
+        // Responsive menu for mobile
+        function handleResize() {
+            const menu = document.getElementById('menuOptions');
+            if (window.innerWidth > 600) {
+                menu.style.display = 'flex';
+            } else {
+                menu.style.display = 'none';
+            }
+        }
+        window.addEventListener('resize', handleResize);
+        window.addEventListener('DOMContentLoaded', handleResize);
+    </script>
+</body>
+</html>
